@@ -1,0 +1,111 @@
+#+title: Option-Like Securities
+#+author: Matt Brigida, Ph.D.
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+
+Once we had a coherent method to value options, we were able to approach valuing many securities as options. 
+
+* Callable Bonds
+
+The issuing company has the right to buy the bond back at some price.  That is, the company has a call option on the bond.
+
+So when you buy a callable bond, this is equivalent to entering into a *covered call spread* on the bond---buying the bond and selling a call to the company.
+
+How do we value a callable bond?  The callable bond will have a higher yield (coupon payment) than an equivalent /straight/ bond.  The present value of the difference in coupon payments is the value of the option sold buy the bond buyer.
+
+Note, the call option in the callable bond may be more complex than a typical call option of stock.  The bond may be call protected for some period of time or it may be a "make-whole call".
+
+* Convertible Bonds/Preferred Stock
+
+These are securities where you have the option to exchange the bond/preferred stock for a given amount of common stock.
+
+For example, a bond with a conversion value of 10 allows you to convert a $1000 face value bond into 10 shares of common stock.  If the bond's price is 80, then you would want to convert the bond to stock if the stock's price is above $80 per share.
+
+-  Most /converts/ are out of the money.  
+-  Price greater than the $max(conversion\ value, straight\ bond\ value)$
+
+Benefits of a bond: interest tax deductible
+
+-  /Converts/ often behave like stock.
+
+* Warrants
+
+- Employee Stock Options!
+
+-  Warrants dilute present stockholders (company issues stock at exercise).
+
+* Collateralized Loans
+
+** As Call 
+
+Say you take out a loan for $X with an asset worth $S_T$ as collateral.  At maturity of the loan:
+
+-  If the asset is worth $S_T > X$ then you pay back the loan and have $S_T - X$.
+
+-  If $S_t < X$ then you default which forfeits $S_T$ for $X.
+
+That is you receive $max(S_T - X, 0)$ at maturity.
+
+** As Put
+
+You can look at the loan as equivalent to the borrower being able to sell (put) the collateral to the lender for $X.  You would do so if $X - S_T > 0$.
+
+** Put-Call Parity
+
+$S_0 +P_0 = C_0 + \frac{X}{(1+r_f)}$
+
+* Corporate Equity (in Levered Firm)
+
+- Note: Original Black-Scholes Valuation.
+
+Say a firm has $L in debt, and $A in assets.  Due to limited liability the value of the firm's equity is: (balance sheet identity A = L + E)
+
+-  $A-L$ if $A > L$
+-  $0$ if $A \leq L$
+
+or $max(A - L, 0)$
+
+* Never Exercise and American Call on a Non0Dividend Paying Stock
+
+Consider two portfolios:
+
+1.  Buy share of stock
+
+2. 
+ a. Buy zero-coupon bond with X par
+ b. Buy call option with X strike
+
+
+Payoff:
+
+Portfolio 1:
+|       | $S_T > X$ | $S_T < X$ |
+|-------+-----------+-----------|
+| S_T   | S_T       | S_T       |
+|-------+-----------+-----------|
+| Total | S_T       | S_T       |
+
+
+Portfolio 2:
+|       | $S_T > X$ | $S_T < X$ |
+|-------+-----------+-----------|
+| C     | $S_T - X$ | 0         |
+| Bond  | X         | X         |
+|-------+-----------+-----------|
+| Total | $S_T$     | X         |
+
+=> We will pay more for portfolio 2.
+
+$C_0 + \frac{X}{1+r} > S_0 \rightarrow C_0  > max(S_0 - \frac{X}{1+r}, 0) > max(S_0 - X, 0)$
+
+American Call >= European Call
+
+Non-Dividend Paying:
+American Call = European Call
+
+* Financial Engineering?
+
+MITTs: Buy bond and call.
+
+* Asian Option
+
+Strike price is an average.
