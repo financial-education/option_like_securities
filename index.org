@@ -1,6 +1,7 @@
 #+title: Option-Like Securities
 #+author: Matt Brigida, Ph.D.
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+email: matthew.brigida@sunypoly.edu
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 Once we had a coherent method to value options, we were able to approach valuing many securities as options. 
 
@@ -41,7 +42,7 @@ Say you take out a loan for $X with an asset worth $S_T$ as collateral.  At matu
 
 -  If the asset is worth $S_T > X$ then you pay back the loan and have $S_T - X$.
 
--  If $S_t < X$ then you default which forfeits $S_T$ for $X.
+-  If $S_T < X$ then you default which forfeits $S_T$ for $X.
 
 That is you receive $max(S_T - X, 0)$ at maturity.
 
@@ -64,48 +65,16 @@ Say a firm has $L in debt, and $A in assets.  Due to limited liability the value
 
 or $max(A - L, 0)$
 
-* Never Exercise and American Call on a Non0Dividend Paying Stock
+Which is a call option with L strike price and A underlying.
 
-Consider two portfolios:
+Does this have any implications for investor preferences??? => Stockholders want the company to be risky.
 
-1.  Buy share of stock
-
-2. 
- a. Buy zero-coupon bond with X par
- b. Buy call option with X strike
-
-
-Payoff:
-
-Portfolio 1:
-|       | $S_T > X$ | $S_T < X$ |
-|-------+-----------+-----------|
-| S_T   | S_T       | S_T       |
-|-------+-----------+-----------|
-| Total | S_T       | S_T       |
-
-
-Portfolio 2:
-|       | $S_T > X$ | $S_T < X$ |
-|-------+-----------+-----------|
-| C     | $S_T - X$ | 0         |
-| Bond  | X         | X         |
-|-------+-----------+-----------|
-| Total | $S_T$     | X         |
-
-=> We will pay more for portfolio 2.
-
-$C_0 + \frac{X}{1+r} > S_0 \rightarrow C_0  > max(S_0 - \frac{X}{1+r}, 0) > max(S_0 - X, 0)$
-
-American Call >= European Call
-
-Non-Dividend Paying:
-American Call = European Call
-
-* Financial Engineering?
+* Financial Engineering
 
 MITTs: Buy bond and call.
 
-* Asian Option
+* Exotic Options
 
-Strike price is an average.
+** Asian Option
+
+Strike price is an average of the underlying's price.
